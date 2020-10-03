@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1601573888 source:c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÕodo remoto - i\programa«√o avan«ada\projeto 1 - polinÙmios\polinomio\main.cpp
+	<iostream>
+	<cmath>
+	<cstring>
+	"poli.h"
+
+1601659540 c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÕodo remoto - i\programa«√o avan«ada\projeto 1 - polinÙmios\polinomio\poli.h
+	<iostream>
+	<cmath>
+
+1601599764 source:c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÕodo remoto - i\programa«√o avan«ada\projeto 1 - polinÙmios\polinomio\poli.cpp
+	<iostream>
+	<cmath>
+	"poli.h"
+
