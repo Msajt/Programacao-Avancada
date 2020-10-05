@@ -89,11 +89,10 @@ double Poly::operator[](unsigned elem) const{
 double Poly::GetValor(double x) const{
     double result = 0.0;
 
-    // Como o primeiro elemento não é seguido de 'x', então não é necessário coloca-lo no laço
-    result += eq[0];
-    for(unsigned i=1; i<tam; i++){
+    for(unsigned i=0; i<tam; i++){
         // pow(base, expoente)
-        result += eq[i] * pow(x, i);
+        result += eq[i]*(pow(x, i));
+        //cout << i << " = " << eq[i]*(pow(x, i)) << endl;
     }
 
     return result;
@@ -108,22 +107,10 @@ double Poly::operator()(double x) const{
 void Poly::SetGrau(unsigned grau){
     // Polinomio de grau = 2, tem 3 elementos
 
-    if(tam != 0){
+    if(tam > 0 && tam != grau+1){
         // Criando um polinômio de grau 'x', que tem tamanho x+1
         Poly prov(grau);
 
-        // Caso o polinomio for de grau nulo
-        if(grau == 0){
-            if(eq[0] == 0.0){
-                for(unsigned i=0; i<prov.tam; i++){
-                    prov.eq[i] = 0.0;
-                }
-            } else {
-                for(unsigned i=0; i<prov.tam; i++){
-                    prov.eq[i] = eq[i];
-                }
-            }
-        } else {
             for(unsigned i=0; i<prov.tam; i++){
             // Passo os elementos que estão no polinomio original para o provisório
                 if(i < tam){
@@ -132,13 +119,13 @@ void Poly::SetGrau(unsigned grau){
                     prov.eq[i] = 0.0;
                 }
             }
-        }
 
         // Desalocar a memória do polinomio original
         Limpar();
         // Apontando a memória do polinomio, agora limpo, para o novo polinomio
         *this = prov;
-    } else {
+    }
+    else if(tam == 0){
         Criar(grau);
     }
 }
