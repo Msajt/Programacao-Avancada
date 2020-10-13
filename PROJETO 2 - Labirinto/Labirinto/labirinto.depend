@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1599082906 source:c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÕodo remoto - i\programa«√o avan«ada\projeto 2 - labirinto\labirinto\labirinto_main.cpp
+	<iostream>
+	<cmath>
+	<chrono>
+	"labirinto.h"
+
+1594731633 c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÕodo remoto - i\programa«√o avan«ada\projeto 2 - labirinto\labirinto\labirinto.h
+	<vector>
+
+1602565952 source:c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÕodo remoto - i\programa«√o avan«ada\projeto 2 - labirinto\labirinto\labirinto.cpp
+	<iostream>
+	<iomanip>
+	<fstream>
+	<cstdlib>
+	<string>
+	<time.h>
+	<cmath>
+	<list>
+	<algorithm>
+	"labirinto.h"
+
