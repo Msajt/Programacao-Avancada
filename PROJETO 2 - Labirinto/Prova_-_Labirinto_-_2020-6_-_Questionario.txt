@@ -1,0 +1,88 @@
+﻿PROVA - PROGRAMAÇÃO AVANÇADA - 2020.6
+Projeto Labirinto
+
+
+Alun@: Paulo César Medeiros Santos - 20180033417
+
+
+A avaliação consiste de 10 (dez) labirintos cujos mapas encontram-se no arquivo com as questões da prova. Para cada questão devem ser informados os seguintes resultados:
+
+== DADOS A SEREM SEMPRE INFORMADOS:
+(informe -1 apenas se seu programa travou na execução)
+* Tempo de execução (em milissegundos)
+* Número de nós em aberto (número inteiro)
+* Número de nós em fechado (número inteiro)
+== DADOS CUJO VALOR É -1 SE NÃO FOR ENCONTRADO CAMINHO
+(informe -1 também se seu programa travou na execução)
+* Comprimento do caminho (número real)
+* Profundidade do caminho (número inteiro)
+
+QUESTÃO 01
+Tempo: 4.017ms
+Nós Aberto: 0 
+Nós Fechado: 100
+Comprimento: 12.7279
+Profundidade: 9
+
+QUESTÃO 02
+Tempo: 0ms
+Nós Aberto: 0 
+Nós Fechado: 6
+Comprimento: -1
+Profundidade: -1
+
+QUESTÃO 03
+Tempo: 4.02ms
+Nós Aberto: 0
+Nós Fechado: 90
+Comprimento: -1
+Profundidade: -1
+
+QUESTÃO 04
+Tempo: 7.005ms
+Nós Aberto: 7
+Nós Fechado: 195
+Comprimento: 32.5563
+Profundidade: 28
+
+QUESTÃO 05
+Tempo: 88.062ms
+Nós Aberto: 0
+Nós Fechado: 872
+Comprimento: 56.8701
+Profundidade: 49
+
+QUESTÃO 06
+Tempo: 3.02ms
+Nós Aberto: 4
+Nós Fechado: 119
+Comprimento: 31.8995
+Profundidade: 29
+
+QUESTÃO 07
+Tempo: 1.001ms
+Nós Aberto: 2
+Nós Fechado: 79
+Comprimento: 17.6569
+Profundidade: 16
+
+QUESTÃO 08
+Tempo: 0.999ms
+Nós Aberto: 3
+Nós Fechado: 40
+Comprimento: 16.2426
+Profundidade: 15
+
+QUESTÃO 09
+Tempo: 3.002ms
+Nós Aberto: 0
+Nós Fechado: 78
+Comprimento: 20.0711
+Profundidade: 18
+
+QUESTÃO 10
+Tempo: 2.001ms
+Nós Aberto: 0
+Nós Fechado: 78
+Comprimento: 18
+Profundidade: 18
