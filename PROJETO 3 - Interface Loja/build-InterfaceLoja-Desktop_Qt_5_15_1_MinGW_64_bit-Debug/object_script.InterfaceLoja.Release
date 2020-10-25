@@ -1,0 +1,10 @@
+release/incluircd.o
+release/incluirdvd.o
+release/incluirlivro.o
+release/loja.o
+release/main.o
+release/mainloja.o
+release/moc_incluircd.o
+release/moc_incluirdvd.o
+release/moc_incluirlivro.o
+release/moc_mainloja.o
