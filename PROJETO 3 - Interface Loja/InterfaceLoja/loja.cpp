@@ -6,6 +6,9 @@
 #include <limits>
 #include "loja.h"
 
+#include <QDebug>
+#include <QString>
+
 using namespace std;
 
 void Produto::digitar()

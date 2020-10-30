@@ -45,25 +45,25 @@ MainLoja::MainLoja(QWidget *parent)
 
     // Front-end da tabela
     // --> Label
-    ui->livrosLabel->setStyleSheet("background=lightgray");
-    ui->cdsLabel->setStyleSheet("background=lightgray");
-    ui->dvdsLabel->setStyleSheet("background=lightgray");
+    ui->livrosLabel->setStyleSheet("background:lightgray");
+    ui->cdsLabel->setStyleSheet("background:lightgray");
+    ui->dvdsLabel->setStyleSheet("background:lightgray");
 
     // --> CABEÇALHOS
     // => Livros
-    ui->livrosWidget->setStyleSheet("QHeadView::section{background-color=lightgray}");
+    ui->livrosWidget->setStyleSheet("QHeaderView::section{background-color:lightgray}");
     ui->livrosWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
     ui->livrosWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     ui->livrosWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     ui->livrosWidget->setHorizontalHeaderLabels(QStringList() << "Nome" << "Preço" << "Autor");
     // => CDS
-    ui->cdsWidget->setStyleSheet("QHeadView::section{background-color=lightgray}");
+    ui->cdsWidget->setStyleSheet("QHeaderView::section{background-color:lightgray}");
     ui->cdsWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
     ui->cdsWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     ui->cdsWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     ui->cdsWidget->setHorizontalHeaderLabels(QStringList() << "Nome" << "Preço" << "N° de faixas");
     // => DVDS
-    ui->dvdsWidget->setStyleSheet("QHeadView::section{background-color=lightgray}");
+    ui->dvdsWidget->setStyleSheet("QHeaderView::section{background-color:lightgray}");
     ui->dvdsWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
     ui->dvdsWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     ui->dvdsWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
@@ -77,8 +77,9 @@ MainLoja::~MainLoja()
 {
     delete ui;
 }
-
+// ======================================================================
 // ====================== EXIBIÇÃO DAS LISTAS ===========================
+// ======================================================================
 void MainLoja::ExibirListas()
 {
     // Exibir o total das listas
@@ -219,7 +220,9 @@ void MainLoja::ExibirTotal()
     totalItens->setNum(valorTotal);
 }
 
+// ===================================================================
 // ================== TABELAS LIVRO, CD E DVD ========================
+// ===================================================================
 
 void MainLoja::on_livrosWidget_cellDoubleClicked(int row, int)
 {
@@ -263,7 +266,9 @@ void MainLoja::on_dvdsWidget_cellDoubleClicked(int row, int)
     }
 }
 
+// ===================================================================
 // ========================= ABA ARQUIVO =============================
+// ===================================================================
 
 void MainLoja::on_actionLer_triggered()
 {
@@ -273,14 +278,16 @@ void MainLoja::on_actionLer_triggered()
      * as listas de itens.
     */
 
-    // QFileDialog::getOpenFileName(objeto, nomeJanela, , arquivosSuportados)
-    QString fileName = QFileDialog::getOpenFileName(this, "Ler estoque", "", "Estoques (*.txt);;Todos(*.*)");
+    // QFileDialog::getOpenFileName(objeto, nomeJanela, diretório, arquivosSuportados)
+    QString fileName = QFileDialog::getOpenFileName(this, "Ler estoque", "", "Estoques (*.txt);;Todos (*.*)");
+    // Pegar apenas o nome do arquivo
+    QString fN = QFileInfo(fileName).fileName();
     // Se não estiver vazio
-    if(!fileName.isEmpty()){
-        bool okFile = X.ler(fileName.toStdString());
+    if(!fN.isEmpty()){
+        bool okFile = X.ler(fN.toStdString());
         // Caso a leitura der falso
         if(!okFile){
-            QMessageBox::critical(this, "Erro na leitura", "Houve um erro ao ler o arquivo " + fileName);
+            QMessageBox::critical(this, "Erro na leitura", "Houve um erro ao ler o arquivo\n" + fN);
         }
         // Se estiver tudo certo vai exibir a lista
         ExibirListas();
@@ -295,13 +302,15 @@ void MainLoja::on_actionSalvar_triggered()
     */
 
     // QFileDialog::getOpenFileName(objeto, nomeJanela, , arquivosSuportados)
-    QString fileName = QFileDialog::getSaveFileName(this, "Salvar estoque", "", "Estoques (*.txt);;Todos(*.*)");
+    QString fileName = QFileDialog::getSaveFileName(this, "Salvar estoque", "", "Estoques (*.txt);;Todos (*.*)");
+    // Pegar apenas o nome do arquivo
+    QString fN = QFileInfo(fileName).fileName();
     // Se não estiver vazio
-    if(!fileName.isEmpty()){
-        bool okFile = X.salvar(fileName.toStdString());
+    if(!fN.isEmpty()){
+        bool okFile = X.salvar(fN.toStdString());
         // Caso a leitura der falso
         if(!okFile){
-            QMessageBox::critical(this, "Erro ao salvar", "Houve um erro ao salvar o arquivo " + fileName);
+            QMessageBox::critical(this, "Erro ao salvar", "Houve um erro ao salvar o arquivo\n" + fN);
         }
     }
 }
@@ -311,7 +320,9 @@ void MainLoja::on_actionSair_triggered()
     QCoreApplication::quit();
 }
 
+// ===================================================================
 // ======================== ABA ITEM =================================
+// ===================================================================
 
 void MainLoja::on_actionIncluirLivro_triggered()
 {
@@ -331,7 +342,9 @@ void MainLoja::on_actionIncluirDVD_triggered()
     inclDVD->show();
 }
 
+// ====================================================================
 // ============================ SLOT ==================================
+// ====================================================================
 
 void MainLoja::slotIncluirLivro(QString nome, QString preco, QString autor)
 {
