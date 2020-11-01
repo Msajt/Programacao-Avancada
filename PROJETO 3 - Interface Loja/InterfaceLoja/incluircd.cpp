@@ -24,4 +24,9 @@ void IncluirCD::on_buttonBox_accepted()
 
     // Emitir sinal
     emit signIncluirCD(nome, preco, faixas);
+
+    // Limpar dados após a execução
+    ui->nomeLineEdit->clear();
+    ui->precoLineEdit->clear();
+    ui->faixasLineEdit->clear();
 }

@@ -24,4 +24,9 @@ void IncluirLivro::on_buttonBox_accepted()
 
     // Emitir sinal
     emit signIncluirLivro(nome, preco, autor);
+
+    // Limpar dados após a execução
+    ui->nomeLineEdit->clear();
+    ui->precoLineEdit->clear();
+    ui->autorLineEdit->clear();
 }

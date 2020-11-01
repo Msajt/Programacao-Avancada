@@ -281,13 +281,13 @@ void MainLoja::on_actionLer_triggered()
     // QFileDialog::getOpenFileName(objeto, nomeJanela, diretório, arquivosSuportados)
     QString fileName = QFileDialog::getOpenFileName(this, "Ler estoque", "", "Estoques (*.txt);;Todos (*.*)");
     // Pegar apenas o nome do arquivo
-    QString fN = QFileInfo(fileName).fileName();
+    QString archiveName = QFileInfo(fileName).fileName();
     // Se não estiver vazio
-    if(!fN.isEmpty()){
-        bool okFile = X.ler(fN.toStdString());
+    if(!archiveName.isEmpty()){
+        bool okFile = X.ler(archiveName.toStdString());
         // Caso a leitura der falso
         if(!okFile){
-            QMessageBox::critical(this, "Erro na leitura", "Houve um erro ao ler o arquivo\n" + fN);
+            QMessageBox::critical(this, "Erro na leitura", "Houve um erro ao ler o arquivo\n" + archiveName);
         }
         // Se estiver tudo certo vai exibir a lista
         ExibirListas();
@@ -304,13 +304,13 @@ void MainLoja::on_actionSalvar_triggered()
     // QFileDialog::getOpenFileName(objeto, nomeJanela, , arquivosSuportados)
     QString fileName = QFileDialog::getSaveFileName(this, "Salvar estoque", "", "Estoques (*.txt);;Todos (*.*)");
     // Pegar apenas o nome do arquivo
-    QString fN = QFileInfo(fileName).fileName();
+    QString archiveName = QFileInfo(fileName).fileName();
     // Se não estiver vazio
-    if(!fN.isEmpty()){
-        bool okFile = X.salvar(fN.toStdString());
+    if(!archiveName.isEmpty()){
+        bool okFile = X.salvar(archiveName.toStdString());
         // Caso a leitura der falso
         if(!okFile){
-            QMessageBox::critical(this, "Erro ao salvar", "Houve um erro ao salvar o arquivo\n" + fN);
+            QMessageBox::critical(this, "Erro ao salvar", "Houve um erro ao salvar o arquivo\n" + archiveName);
         }
     }
 }

@@ -24,4 +24,9 @@ void IncluirDVD::on_buttonBox_accepted()
 
     // Emitir sinal
     emit signIncluirDVD(nome, preco, duracao);
+
+    // Limpar dados após a execução
+    ui->nomeLineEdit->clear();
+    ui->precoLineEdit->clear();
+    ui->duracaoLineEdit->clear();
 }
