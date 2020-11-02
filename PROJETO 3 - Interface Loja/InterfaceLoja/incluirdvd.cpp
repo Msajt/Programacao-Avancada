@@ -29,4 +29,6 @@ void IncluirDVD::on_buttonBox_accepted()
     ui->nomeLineEdit->clear();
     ui->precoLineEdit->clear();
     ui->duracaoLineEdit->clear();
+
+    QDialog::close();
 }

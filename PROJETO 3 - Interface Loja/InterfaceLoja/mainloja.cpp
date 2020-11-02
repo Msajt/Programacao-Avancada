@@ -45,9 +45,9 @@ MainLoja::MainLoja(QWidget *parent)
 
     // Front-end da tabela
     // --> Label
-    ui->livrosLabel->setStyleSheet("background:lightgray");
-    ui->cdsLabel->setStyleSheet("background:lightgray");
-    ui->dvdsLabel->setStyleSheet("background:lightgray");
+    ui->livrosLabel->setStyleSheet("background:lightgray; border: 1px solid black;");
+    ui->cdsLabel->setStyleSheet("background:lightgray; border: 1px solid black;");
+    ui->dvdsLabel->setStyleSheet("background:lightgray; border: 1px solid black;");
 
     // --> CABEÇALHOS
     // => Livros
@@ -367,7 +367,10 @@ void MainLoja::slotIncluirLivro(QString nome, QString preco, QString autor)
         X.incluirLivro(livro);
         ExibirListaLivros();
     } else {
-        QMessageBox::critical(this, "Erro", QString("Preencha todos os dados corretamente"));
+        QMessageBox::critical(this, "Erro ao incluir livro", QString("Preencha todos os dados corretamente:\n")
+                              + "Nome: " + nome
+                              + "\nPreco: " + preco
+                              + "\nFaixas: " + autor);
     }
 }
 
@@ -385,7 +388,10 @@ void MainLoja::slotIncluirCD(QString nome, QString preco, QString faixas)
         X.incluirCD(cd);
         ExibirListaCDS();
     } else {
-        QMessageBox::critical(this, "Erro", QString("Preencha todos os dados corretamente"));
+        QMessageBox::critical(this, "Erro ao incluir CD", QString("Preencha todos os dados corretamente:\n")
+                              + "Nome: " + nome
+                              + "\nPreco: " + preco
+                              + "\nFaixas: " + faixas);
     }
 }
 
@@ -403,7 +409,10 @@ void MainLoja::slotIncluirDVD(QString nome, QString preco, QString duracao)
         X.incluirDVD(dvd);
         ExibirListaDVDS();
     } else {
-        QMessageBox::critical(this, "Erro", QString("Preencha todos os dados corretamente"));
+        QMessageBox::critical(this, "Erro ao incluir DVD", QString("Preencha todos os dados corretamente:\n")
+                              + "Nome: " + nome
+                              + "\nPreco: " + preco
+                              + "\nFaixas: " + duracao);
     }
 }
 

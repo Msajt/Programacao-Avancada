@@ -29,4 +29,6 @@ void IncluirLivro::on_buttonBox_accepted()
     ui->nomeLineEdit->clear();
     ui->precoLineEdit->clear();
     ui->autorLineEdit->clear();
+
+    QDialog::close();
 }

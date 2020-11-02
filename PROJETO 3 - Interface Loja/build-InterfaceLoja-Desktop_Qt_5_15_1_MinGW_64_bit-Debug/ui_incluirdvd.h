@@ -59,8 +59,9 @@ public:
         precoLabel->setGeometry(QRect(20, 90, 47, 13));
         buttonBox = new QDialogButtonBox(IncluirDVD);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setGeometry(QRect(70, 160, 156, 23));
+        buttonBox->setGeometry(QRect(0, 160, 301, 23));
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBox->setCenterButtons(true);
 
         retranslateUi(IncluirDVD);
 
