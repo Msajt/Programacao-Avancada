@@ -32,3 +32,12 @@ void IncluirCD::on_buttonBox_accepted()
 
     QDialog::close();
 }
+
+void IncluirCD::on_buttonBox_rejected()
+{
+    ui->nomeLineEdit->clear();
+    ui->precoLineEdit->clear();
+    ui->faixasLineEdit->clear();
+
+    QDialog::close();
+}

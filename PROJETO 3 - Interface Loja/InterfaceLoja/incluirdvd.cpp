@@ -32,3 +32,12 @@ void IncluirDVD::on_buttonBox_accepted()
 
     QDialog::close();
 }
+
+void IncluirDVD::on_buttonBox_rejected()
+{
+    ui->nomeLineEdit->clear();
+    ui->precoLineEdit->clear();
+    ui->duracaoLineEdit->clear();
+
+    QDialog::close();
+}

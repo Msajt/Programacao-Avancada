@@ -1,0 +1,17 @@
+LISTALIVRO 6
+L: "Memorial";$32.34;"Pedro"
+L: "Minha Vida";$2.86;"Adolfo"
+L: "Poemas";$13.14;"Joao de Sa"
+L: "Minha história";$25.00;"Fulano da Silva"
+L: "Histórias de terro";$12.50;"Sicrano Mendes"
+L: "Teste dos testes";$24.99;"João Reis"
+LISTACD 3
+C: "Solidao";$27.86;12
+C: "Verso Azul";$8.52;14
+C: "Nova Onda";$10.42;12
+LISTADVD 5
+D: "Combate VI";$14.38;126
+D: "Barroco";$8.52;72
+D: "Nunca Mais!";$11.00;185
+D: "Eu, Tu, Eles";$7.00;134
+D: "Valter Montes - O Retorno";$30.50;120
