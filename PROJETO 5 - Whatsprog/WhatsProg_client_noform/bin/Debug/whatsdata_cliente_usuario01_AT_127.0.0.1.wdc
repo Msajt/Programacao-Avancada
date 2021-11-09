@@ -1,0 +1,6 @@
+DADOS_CLIENTE 127.0.0.1 usuario01 0 1
+CONVERSA usuario02 2
+1 3 usuario02 usuario01
+Msg01
+2 3 usuario02 usuario01
+Msg02

@@ -1,0 +1,47 @@
+# depslib dependency file v1.0
+1574970372 source:c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÍodo remoto - i\programaÇÃo avanÇada\projeto 5 - whatsprog\whatsprog_client_noform\dados_cliente.cpp
+	"dados_cliente.h"
+	<algorithm>
+
+1543949596 c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÍodo remoto - i\programaÇÃo avanÇada\projeto 5 - whatsprog\whatsprog_client_noform\dados_cliente.h
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<list>
+	<stdint.h>
+	<mutex>
+	"dados_whatsprog.h"
+	"mysocket.h"
+
+1595331780 c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÍodo remoto - i\programaÇÃo avanÇada\projeto 5 - whatsprog\whatsprog_client_noform\dados_whatsprog.h
+	<iostream>
+	<fstream>
+	<string>
+	<stdint.h>
+	<list>
+
+1595108102 c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÍodo remoto - i\programaÇÃo avanÇada\projeto 5 - whatsprog\whatsprog_client_noform\mysocket.h
+	<iostream>
+	<string>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/socket.h>
+
+1574289015 source:c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÍodo remoto - i\programaÇÃo avanÇada\projeto 5 - whatsprog\whatsprog_client_noform\dados_whatsprog.cpp
+	"dados_whatsprog.h"
+
+1595419686 source:c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÍodo remoto - i\programaÇÃo avanÇada\projeto 5 - whatsprog\whatsprog_client_noform\main_cliente_noform.cpp
+	"dados_cliente.h"
+	"mysocket.h"
+	<cstdio>
+	<thread>
+
+1595107704 source:c:\users\paulo\desktop\ufrn\cronogramas e disciplinas\perÍodo remoto - i\programaÇÃo avanÇada\projeto 5 - whatsprog\whatsprog_client_noform\mysocket.cpp
+	<iostream>
+	<string.h>
+	"mysocket.h"
+	<sys/types.h>
+	<netdb.h>
+	<unistd.h>
+

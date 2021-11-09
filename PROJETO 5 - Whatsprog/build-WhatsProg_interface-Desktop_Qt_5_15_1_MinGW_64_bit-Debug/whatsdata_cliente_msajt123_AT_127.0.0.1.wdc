@@ -1,0 +1,11 @@
+DADOS_CLIENTE 127.0.0.1 msajt123 6 2
+CONVERSA userfake1 3
+3 2 msajt123 userfake1
+olá
+4 2 msajt123 userfake1
+como vai?
+5 3 msajt123 userfake1
+cade você?
+CONVERSA userfake2 1
+6 3 msajt123 userfake2
+cadê você?

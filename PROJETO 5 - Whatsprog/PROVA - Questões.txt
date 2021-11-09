@@ -1,0 +1,394 @@
+######################################################################
+PARTE 1 - TESTE DO SEU SERVIDOR
+Você deve utilizar:
+1) O servidor desenvolvido por você +
+2) O cliente em modo texto fornecido pelo professor
+######################################################################
+
+// Teste das conexões
+
+1.1) Lance o seu servidor. Não encerre a execução do programa até que seja solicitado.
+
+1.2) Lance o programa cliente em console fornecido.
+
+1.3) No cliente, tente se logar no servidor 127.0.0.1 como um usuário já cadastrado:
+  Login: usuario01
+  Senha: usuario01
+  Verifique se o servidor:
+  - rejeita a conexão (usuário inexistente)
+  - fecha a conexão (o cliente deve encerrar a execução)
+
+1.4) Lance novamente o cliente. Tente se logar no servidor 127.0.0.1 como um novo usuário:
+  Login: usuario01
+  Senha: usuario01
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_NEW_USER
+  CMD ENV P/ usuario01: CMD_LOGIN_OK
+  e se o cliente entra do menu de conversas.
+
+1.5) Desconecte o cliente.
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_LOGOUT_USER
+
+1.6) Tente se conectar novamente ao servidor 127.0.0.1 como um usuário já cadastrado:
+  Login: usuario01
+  Senha: senha_errada
+  Verifique se o servidor:
+  - rejeita a conexão (senha incorreta)
+  - fecha a conexão (o cliente deve encerrar a execução)
+
+1.7) Lance novamente o cliente. Tente se logar no servidor 127.0.0.1 como um usuário já cadastrado:
+  Login: usuario01
+  Senha: usuario01
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_LOGIN_USER
+  CMD ENV P/ usuario01: CMD_LOGIN_OK
+  e se o cliente entra do menu de conversas.
+
+1.8) Mantendo o cliente do passo anterior em execução e conectado, lance outro cliente. No novo cliente, tente se conectar ao servidor 127.0.0.1 como um usuário já cadastrado:
+  Login: usuario01
+  Senha: usuario01
+  Verifique se o servidor:
+  - rejeita a conexão (usuario01 jah estah conectado)
+  - fecha a conexão (o segundo cliente deve encerrar a execução; o primeiro cliente deve continuar)
+
+1.9) Mantendo o primeiro cliente em execução e conectado, lance outro cliente. No novo cliente, tente se conectar ao servidor 127.0.0.1 como um novo usuário:
+  Login: usuario02
+  Senha: usuario02
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario02: CMD_LOGIN_USER
+  CMD ENV P/ usuario02: CMD_LOGIN_OK
+  e se o segundo cliente entra do menu de conversas.
+
+// Teste do envio de mensagens
+
+1.10) No segundo cliente, escolha a opção de Criar nova conversa e torná-la ativa. Crie a conversa "usuario01". Em seguida, escolha a opção de Escrever mensagem e escreva a mensagem:
+  Msg01
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario02: CMD_NOVA_MSG,1,usuario01
+  CMD ENV P/ usuario02: CMD_MSG_RECEBIDA,1
+  CMD ENV P/ usuario01: CMD_NOVA_MSG,1,usuario02
+  CMD ENV P/ usuario02: CMD_MSG_ENTREGUE,1
+  No primeiro cliente, deve aparecer a mensagem "Nova msg recebida (1/1) na conversa usuario02"
+
+1.11) No segundo cliente, escolha a opção de Listar Mensagens.
+  Verifique se é exibida a seguinte informação:
+  1) usuario02->usuario01: Msg01 (VV)
+
+1.12) No primeiro cliente, escolha a opção de Listar conversas
+  Verifique se é exibida a seguinte informação:
+  *usuario02 (1/1) msgs
+
+1.13) No primeiro cliente, escolha a opção de Listar mensagens
+  Verifique se é exibida a seguinte informação:
+  1) usuario02->usuario01: Msg01
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_MSG_LIDA1,1,usuario02
+  CMD ENV P/ usuario02: CMD_MSG_LIDA2,1
+
+1.14) No segundo cliente, escolha novamente a opção de Listar Mensagens.
+  Verifique se é exibida a seguinte informação:
+  1) usuario02->usuario01: Msg01 (VVV)
+
+// Teste do armazenamento de mensagens com destinatário desconectado
+
+1.15) Encerre o primeiro cliente (usuario01) (Sair)
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_LOGOUT_USER
+
+1.16) No segundo cliente, escolha a opção de Escrever mensagem e escreva a mensagem:
+  Msg02
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario02: CMD_NOVA_MSG,2,usuario01
+  CMD ENV P/ usuario02: CMD_MSG_RECEBIDA,2
+
+1.17) No segundo cliente, escolha a opção de Listar Mensagens.
+  Verifique se é exibida a seguinte informação:
+  1) usuario02->usuario01: Msg01 (VVV)
+  2) usuario02->usuario01: Msg02 (V)
+
+1.18) Lance novamente o primeiro cliente. Tente se logar no servidor 127.0.0.1 como um usuário já cadastrado:
+  Login: usuario01
+  Senha: usuario01
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_LOGIN_USER
+  CMD ENV P/ usuario01: CMD_LOGIN_OK
+  CMD ENV P/ usuario01: CMD_NOVA_MSG,2,usuario02
+  CMD ENV P/ usuario02: CMD_MSG_ENTREGUE,2 
+  e se o cliente entra do menu de conversas.
+
+1.19) No segundo cliente, escolha a opção de Listar Mensagens.
+  Verifique se é exibida a seguinte informação:
+  1) usuario02->usuario01: Msg01 (VVV)
+  2) usuario02->usuario01: Msg02 (VV)
+
+// Teste do armazenamento de confirmações de leitura com remetente desconectado
+
+1.20) Encerre o segundo cliente (usuario02) (Sair)
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario02: CMD_LOGOUT_USER
+
+1.21) No primeiro cliente, escolha a opção de Listar mensagens
+  Verifique se é exibida a seguinte informação:
+  1) usuario02->usuario01: Msg01
+  2) usuario02->usuario01: Msg02
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_MSG_LIDA1,2,usuario02
+
+1.22) Lance novamente o segundo cliente. Tente se logar no servidor 127.0.0.1 como um usuário já cadastrado:
+  Login: usuario02
+  Senha: usuario02
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario02: CMD_LOGIN_USER
+  CMD ENV P/ usuario02: CMD_LOGIN_OK
+  CMD ENV P/ usuario02: CMD_MSG_LIDA2,2
+
+1.23) No segundo cliente, escolha a opção de Listar Mensagens.
+  Verifique se é exibida a seguinte informação:
+  1) usuario02->usuario01: Msg01 (VVV)
+  2) usuario02->usuario01: Msg02 (VVV)
+
+1.24) Encerre o segundo cliente (usuario02) (Sair)
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario02: CMD_LOGOUT_USER
+
+1.25) Encerre o primeiro cliente (usuario01) (Sair)
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_LOGOUT_USER
+
+1.26) Encerre o programa servidor.
+
+######################################################################
+PARTE 2 - TESTE DO SEU CLIENTE QT
+Você deve utilizar:
+1) O servidor fake fornecido pelo professor +
+2) O cliente Qt desenvolvido por você
+######################################################################
+
+// Teste das conexões
+
+2.1) Lance o servidor fake. Não encerre a execução do programa até que seja solicitado.
+2.2) Lance o seu cliente Qt.
+2.3) No cliente, tente se logar no servidor 127.0.0.1 como um usuário já cadastrado:
+  Login: usuario01
+  Senha: usuario01
+  Verifique que o servidor informa:
+  Login (usuario) nao existe. Desconectando
+  Verifique se o cliente informa que a conexão foi rejeitada pelo servidor e continua em funcionamento.
+2.4) Tente se logar no servidor 127.0.0.1 como um novo usuário:
+  Login: usuario01
+  Senha: usuario01
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario: CMD_NEW_USER
+  CMD ENV P/ usuario: CMD_LOGIN_OK
+  e se o cliente entra em modo conectado, informando na barra de status.
+2.5) Desconecte o cliente.
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario: CMD_LOGOUT_USER
+2.6) Tente se conectar novamente ao servidor 127.0.0.1 como um usuário já cadastrado:
+  Login: usuario01
+  Senha: senha_errada
+  Verifique que o servidor informa:
+  Senha para usuario (usuario) nao confere. Desconectando
+  Verifique se o cliente informa que a conexão foi rejeitada pelo servidor e continua em funcionamento.
+2.7) Tente se logar no servidor 127.0.0.1 como um usuário já cadastrado:
+  Login: usuario01
+  Senha: usuario01
+  Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_LOGIN_USER
+  CMD ENV P/ usuario01: CMD_LOGIN_OK
+  e se o cliente entra em modo conectado, informando na barra de status.
+
+// Teste da recepção de mensagens
+
+2.8) Após a conexão do cliente, não faça nenhuma ação (clicar, dar enter, etc.) na interface e aguarde a chegada da primeira mensagem de algum dos "usuários" (userfake1 ou userfake2)
+  O servidor deve exibir os comandos:
+  CMD REC DE userfake?: CMD_NOVA_MSG,1,usuario01
+  CMD ENV P/ userfake?: CMD_MSG_RECEBIDA,1
+  CMD ENV P/ usuario01: CMD_NOVA_MSG,1,userfake?
+  CMD ENV P/ userfake?: CMD_MSG_ENTREGUE,13
+  Verifique se no cliente acontecem as seguintes ações, sem intervenção do usuário:
+  a) É criada uma conversa "userfake?"
+  b) Essa conversa fica selecionada (em negrito)
+  c) A primeira conversa é a única da lista de conversas
+  d) O nome da conversa fica com fundo branco e indicando 0/1 mensagens (1 total, 0 não lida)
+  e) O nome do usuário da conversa aparece em cima da tabela com as mensagens da conversa
+  f) A mensagem recebida é imediatamente exibida na lista de mensagens, com status de uma seta
+  g) Verifique se o servidor exibe os comandos:
+  CMD REC DE usuario01: CMD_MSG_LIDA1,1,userfake?
+  CMD ENV P/ userfake?: CMD_MSG_LIDA2,1
+
+2.9) Aguarde a chegada da primeira mensagem do outro "usuário" fake, ainda sem fazer nenhuma ação na interface. Esse acontecimento (2.9) pode ser simultâneo com (2.8) ou acontecer antes ou depois de (2.10).
+  Verifique se no cliente acontecem as seguintes ações, sem intervenção do usuário:
+  a) É criada outra conversa "userfake?"
+  b) Essa nova conversa não fica selecionada (não fica em negrito)
+  c) A nova conversa fica sendo a primeira da lista de conversas
+  d) O nome da conversa fica com fundo verde e indicando 1/1 mensagens (1 total, 1 não lida)
+  e) A mensagem recebida não é exibida na lista de mensagens, pois a conversa não está selecionada.
+
+2.10) Ainda sem fazer nenhuma ação na interface, aguarde a chegada da segunda mensagem do "usuário" que enviou a primeira mensagem e cuja conversa está selecionada. Esse acontecimento (2.10) pode acontecer antes ou depois de (2.9). 
+  Verifique se no cliente acontecem as seguintes ações, sem intervenção do usuário:
+  a) Essa conversa continua selecionada (em negrito)
+  c) Essa conversa se torna a primeira da lista de conversas
+  d) O nome da conversa fica com fundo branco e indicando 0/2 mensagens (2 total, 0 não lida)
+  e) A nova mensagem recebida é imediatamente exibida na lista de mensagens, com status de uma seta
+  f) Verifique se o servidor exibe os comandos:
+  CMD REC DE usuario01: CMD_MSG_LIDA1,2,userfake?
+  CMD ENV P/ userfake?: CMD_MSG_LIDA2,2
+
+2.11) Após a chegada de ao menos 2 mensagens do usuário para o qual foi recebida a primeira mensagem e de 1 mensagem do outro usuário, selecione (clique duplo ou outra ação que você escolheu para esse fim) a conversa que não está selecionada no momento (a que tem 1 mensagem ainda não visualizada).
+  Verifique se no cliente acontecem as seguintes ações após a clicagem:
+  a) Essa conversa passa a ser selecionada (em negrito)
+  c) Essa conversa permanece onde estava na lista de conversas (1ª ou 2ª) até receber nova mensagem.
+  d) O nome da conversa fica com fundo branco e indicando 0/1 mensagens (1 total, 0 não lida)
+  e) O nome do usuário da conversa aparece em cima da tabela com as mensagens da conversa
+  f) A mensagem recebida é exibida na lista de mensagens, com status de uma seta
+  g) Verifique se o servidor exibe os comandos:
+  CMD REC DE usuario01: CMD_MSG_LIDA1,1,userfake?
+  CMD ENV P/ userfake?: CMD_MSG_LIDA2,1
+
+// Teste do envio de mensagens
+
+2.12) Selecione (clique duplo ou outra ação que você escolheu para esse fim) a conversa com o usuário userfake1 e escreva para ele a mensagem "MyMsg01". Verifique se acontecem as seguintes ações após dar ENTER:
+  a) A conversa userfake1 se torna a primeira da lista de conversas, caso já não fosse.
+  b) A mensagem enviada é exibida na lista de mensagens, com status de dois ticks cinzas
+  c) O servidor exibe os comandos:
+  CMD REC DE usuario01: CMD_NOVA_MSG,1,userfake1
+  CMD ENV P/ usuario01: CMD_MSG_RECEBIDA,1
+  CMD ENV P/ userfake1: CMD_NOVA_MSG,1,usuario01
+  CMD ENV P/ usuario01: CMD_MSG_ENTREGUE,1
+  d) No próximo ciclo do servidor (quando ele imprimir alguma coisa) são exibidos os comandos:
+  CMD REC DE userfake1: CMD_MSG_LIDA1,1,usuario01
+  CMD ENV P/ usuario01: CMD_MSG_LIDA2,1
+  e) A mensagem muda para status de dois ticks azuis
+
+// Teste do recebimento de mensagens armazenadas enquanto o destinatário estava desconectado
+
+2.13) Leia todas as eventuais mensagens ainda não lidas no cliente e aguarde até um ciclo de impressão do servidor durante o qual não haja nenhuma mensagem no buffer (nem do cliente nem para o cliente). Nesse momento, desconecte o cliente (se quiser, pode também encerrar o software do cliente). Deixe o servidor em funcionamento.
+
+2.14) Aguarde até um ciclo do servidor onde sejam geradas mensagens para usuario01. Devem aparecer no buffer "Mensagens para o usuario armazenadas:". Depois de aparecerem essas mensagens, conecte novamente o seu cliente com:
+  Login: usuario01
+  Senha: usuario01
+Verifique se o servidor processa os comandos:
+  CMD REC DE usuario01: CMD_LOGIN_USER
+  CMD ENV P/ usuario01: CMD_LOGIN_OK
+  CMD ENV P/ usuario01: CMD_NOVA_MSG,?,userfake1
+  CMD ENV P/ userfake1: CMD_MSG_ENTREGUE,?
+  CMD ENV P/ usuario01: CMD_NOVA_MSG,?,userfake2
+  CMD ENV P/ userfake2: CMD_MSG_ENTREGUE,?
+  (pode haver mensagem esperando de um dos userfake ou de ambos)
+  Verifique se no cliente, sem intervenção do usuário, a(s) conversa(s) "userfake?" para as quais foram enviadas as mensagens que estavam armazenadas passam a aparecer com fundo verde e indicando 1/? mensagens (1 não lida)
+
+2.15) Selecione a(uma das) conversa(s) que tem mensagem não lida. 
+  Verifique se o servidor exibe os comandos:
+  CMD REC DE usuario01: CMD_MSG_LIDA1,?,userfake?
+  CMD ENV P/ userfake?: CMD_MSG_LIDA2,?
+
+2.16) (Essa operação é contínua, devendo ser avaliada ao longo de todo o funcionamento do cliente)
+  Verifique se estão sendo exibidas corretamente todas as informações que constam na especificação da interface do WhatProg cliente:
+- Barra de status com dados da conexão (usuário e servidor)
+- Na tabela de conversas, 2 colunas:
+  * Número de mensagens da conversa (Não lidas/total)
+  * Nome do usuário da conversa
+- Na tabela de mensagens, 3 colunas, sendo que o fundo da linha na tabela de mensagens é verde (se sou remetente) ou branco (se sou destinatário):
+  * Id, com a id da mensagem
+  * texto, alinhado para a esquerda (se eu sou destinatário) ou para a direita (se sou remetente)
+  * status, com os símbolos apropriados (ícones do WhatsApp)
+- LineEdit para escrever mensagens.
+- Menus com as opções especificadas.
+  
+2.17) Desconecte e encerre o cliente e o servidor fake.
+
+######################################################################
+PARTE 3 - TESTE CONJUNTO SERVIDOR/CLIENTE
+Você deve utilizar:
+1) O servidor desenvolvido por você +
+2) O cliente Qt desenvolvido por você +
+3) O cliente em modo texto fornecido pelo professor
+######################################################################
+
+3.1) Lance o seu servidor. Não encerre a execução do programa até que seja solicitado.
+
+3.2) Lance o seu cliente Qt. Logue-se como usuario novo "usuario01".
+
+3.3) Lance 2 execuções do programa cliente em console fornecido. Logue-se como usuario novo "usuario02" e "usuario03" em cada um deles.
+
+3.4) No cliente Qt, crie uma conversa "usuario02"
+
+3.5) No cliente Qt, escreva uma mensagem "Msg01" e envie (ENTER).
+Verifique se:
+- O cliente console do usuario02 avisa a recepção de uma mensagem na conversa usuario01
+- A mensagem aparece na conversa "usuario02" do cliente Qt, com status 2 ticks cinzas
+
+3.6) No cliente console do usuario 03, crie uma conversa "usuario01", escolha a opção Escrever mensagem, escreva uma mensagem "Msg02" e envie (ENTER).
+Verifique se no cliente Qt:
+- Foi criada a conversa usuario03, que apareceu com fundo verde e número de mensagens 1/1 (1 não lida).
+
+3.7) No cliente console do usuario 03, escolha a opção Listar mensagens.
+Verifique se é exibida a seguinte informação:
+Conversa usuario01:
+1) usuario03->usuario01: Msg02 (VV)
+
+3.8) No cliente Qt, selecione (clique) a conversa usuario03.
+Verifique se é exibida a mensagem "Msg02", com id 1 e status de uma seta.
+
+3.9) No cliente console do usuario 03, escolha a opção Listar mensagens.
+Verifique se é exibida a seguinte informação:
+Conversa usuario01:
+1) usuario03->usuario01: Msg02 (VVV)
+
+3.10) Desconecte e encerre (Sair) o cliente console do usuario 03.
+
+3.11) No cliente Qt, selecione (clique) a conversa usuario02.
+
+3.12) No cliente console do usuario 02, escolha a opção Listar conversas.
+Verifique se é exibida a seguinte informação:
+*usuario01 (1/1) msgs
+
+3.13) No cliente console do usuario 02, escolha a opção Listar mensagens.
+Verifique se é exibida a seguinte informação:
+Conversa usuario01:
+1) usuario01->usuario02: Msg01
+e se, no mesmo instante, o status da Msg01 no console Qt muda para 2 ticks azuis.
+
+3.14) Desconecte e encerre (Sair) o cliente console do usuario 02.
+
+3.15) No cliente Qt, com a conversa usuario02 ainda selecionada, escreva uma mensagem "Msg03" e envie (ENTER).
+Verifique se:
+- A mensagem aparece na conversa "usuario02" do cliente Qt, com status 1 tick cinza.
+
+3.16) Execute novamente o programa cliente console e logue-se como usuario já cadastrado "usuario02".
+Verifique se, imediatamente após a conexão:
+- O cliente console do usuario02 avisa a recepção de uma mensagem na conversa usuario01
+- Na conversa "usuario02" do cliente Qt, A mensagem com status 2 ticks cinzas
+
+3.17) No cliente console do usuario 02, escolha a opção Listar mensagens.
+Verifique se, no mesmo instante, o status da Msg03 no console Qt muda para 2 ticks azuis.
+
+3.18) Desconecte-se no cliente Qt (se quiser, pode também encerrar a execução e lançar de novo)
+
+3.19) No cliente Qt, tente se conectar como usuário existente "usuario02".
+Verifique se o servidor rejeita a conexão (Usuario usuario02 jah estah conectado) e se o cliente:
+- exibe uma mensagem (janela) de erro
+- depois, permanece em funcionamento.
+
+3.20) No cliente Qt, conecte-se como usuário existente "usuario03".
+
+3.21) No cliente console do usuario 02, escolha a opção Voltar ao menu de conversas e depois Criar nova conversa e torna-la ativa. Crie a conversa usuario03. Escolha a opção Escrever mensagem e escreva uma mensagem "Msg04".
+Verifique se no cliente Qt:
+- Apareceu a conversa usuario02, que apareceu com fundo branco, número de mensagens 0/1 (0 não lida) e exibindo a Msg04.
+
+3.22) No cliente console do usuario 02, , escolha a opção Listar mensagens.
+Verifique se é exibida a seguinte informação:
+Conversa usuario03:
+1) usuario02->usuario03: Msg04 (VVV)
+
+3.23) Encerre o cliente console do usuario 02.
+
+3.24) Encerre o cliente Qt.
+
+3.25) Encerre o servidor.
+
+
+
+

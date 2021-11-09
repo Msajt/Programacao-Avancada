@@ -1,0 +1,12 @@
+DADOS_CLIENTE 127.0.0.1 1234567890 2 1
+CONVERSA myUser 5
+52 3 myUser 1234567890
+ol√°
+1 3 1234567890 myUser
+como vai vocà?
+53 3 myUser 1234567890
+estou bem
+2 3 1234567890 myUser
+testando 1 2 3
+54 3 myUser 1234567890
+alo

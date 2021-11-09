@@ -1,0 +1,11 @@
+release/dados_cliente.o
+release/dados_whatsprog.o
+release/logindialog.o
+release/mysocket.o
+release/whatsprogmain.o
+release/main_cliente.o
+release/novaconversa.o
+release/qrc_resources.o
+release/moc_logindialog.o
+release/moc_whatsprogmain.o
+release/moc_novaconversa.o

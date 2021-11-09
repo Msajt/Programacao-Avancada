@@ -1,0 +1,13 @@
+DADOS_CLIENTE 127.0.0.1 novao123 2 2
+CONVERSA userfake2 3
+1 3 userfake2 novao123
+Msg1
+1 3 novao123 userfake2
+boa pinguim anão
+2 2 userfake2 novao123
+Msg2
+CONVERSA userfake1 2
+2 3 novao123 userfake1
+cadê voce
+1 2 userfake1 novao123
+Msg1

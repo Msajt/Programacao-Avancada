@@ -1,0 +1,47 @@
+# depslib dependency file v1.0
+1595458094 source:c:\users\augusto\downloads\programação_avançada\whatsprog_servidor\dados_whatsprog.cpp
+	"dados_whatsprog.h"
+
+1607051568 c:\users\augusto\downloads\programação_avançada\whatsprog_servidor\dados_whatsprog.h
+	<iostream>
+	<fstream>
+	<string>
+	<stdint.h>
+	<list>
+
+1607202133 source:c:\users\augusto\downloads\programação_avançada\whatsprog_servidor\main_servidor.cpp
+	<iostream>
+	<thread>
+	"dados_whatsprog.h"
+	"dados_servidor.h"
+
+1607634227 c:\users\augusto\downloads\programação_avançada\whatsprog_servidor\dados_servidor.h
+	<string>
+	<list>
+	"mysocket.h"
+	"dados_whatsprog.h"
+
+1595108102 c:\users\augusto\downloads\programação_avançada\whatsprog_servidor\mysocket.h
+	<iostream>
+	<string>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/socket.h>
+
+1595107704 source:c:\users\augusto\downloads\programação_avançada\whatsprog_servidor\mysocket.cpp
+	<iostream>
+	<string.h>
+	"mysocket.h"
+	<sys/types.h>
+	<netdb.h>
+	<unistd.h>
+
+1607634227 source:c:\users\augusto\downloads\programação_avançada\whatsprog_servidor\dados_servidor.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<iomanip>
+	<vector>
+	<algorithm>
+	"dados_servidor.h"
+

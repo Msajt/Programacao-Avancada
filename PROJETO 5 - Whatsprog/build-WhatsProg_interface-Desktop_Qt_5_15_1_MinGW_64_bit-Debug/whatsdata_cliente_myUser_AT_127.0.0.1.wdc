@@ -1,0 +1,11 @@
+DADOS_CLIENTE 127.0.0.1 myUser 2 2
+CONVERSA userfake1 3
+1 3 myUser userfake1
+teste
+1 3 userfake1 myUser
+Msg1
+2 3 userfake1 myUser
+Msg2
+CONVERSA userfake2 1
+2 3 myUser userfake2
+ola

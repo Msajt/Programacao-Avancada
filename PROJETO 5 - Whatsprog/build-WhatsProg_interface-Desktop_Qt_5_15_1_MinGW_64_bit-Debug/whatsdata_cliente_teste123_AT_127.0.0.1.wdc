@@ -1,0 +1,23 @@
+DADOS_CLIENTE 127.0.0.1 teste123 4 2
+CONVERSA userfake1 1
+3 2 teste123 userfake1
+teste
+CONVERSA userfake2 9
+1 3 userfake2 teste123
+Msg1
+1 2 teste123 userfake2
+como vai você?
+2 3 teste123 userfake2
+estou bem
+1 3 userfake2 teste123
+Msg1
+1 3 userfake2 teste123
+Msg1
+1 3 userfake2 teste123
+Msg1
+1 3 userfake2 teste123
+Msg1
+1 3 userfake2 teste123
+Msg1
+4 3 teste123 userfake2
+teste

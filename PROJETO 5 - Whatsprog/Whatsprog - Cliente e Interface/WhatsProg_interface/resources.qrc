@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/new/images">
+        <file>status_other.png</file>
+        <file>status0.png</file>
+        <file>status1.png</file>
+        <file>status2.png</file>
+        <file>status3.png</file>
+        <file>whatsprog_icon.png</file>
+    </qresource>
+</RCC>

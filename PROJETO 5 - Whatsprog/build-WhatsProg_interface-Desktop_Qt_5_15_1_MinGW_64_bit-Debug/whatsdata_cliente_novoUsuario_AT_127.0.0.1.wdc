@@ -1,0 +1,9 @@
+DADOS_CLIENTE 127.0.0.1 novoUsuario 1 2
+CONVERSA userfake1 1
+1 2 userfake1 novoUsuario
+Msg1
+CONVERSA userfake2 2
+1 3 userfake2 novoUsuario
+Msg1
+1 3 novoUsuario userfake2
+olá

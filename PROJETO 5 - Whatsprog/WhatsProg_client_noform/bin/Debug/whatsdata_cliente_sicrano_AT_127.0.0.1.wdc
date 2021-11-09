@@ -1,0 +1,8 @@
+DADOS_CLIENTE 127.0.0.1 sicrano 1 1
+CONVERSA myUser 3
+4 2 myUser sicrano
+olá
+1 3 sicrano myUser
+teste
+5 2 myUser sicrano
+olá

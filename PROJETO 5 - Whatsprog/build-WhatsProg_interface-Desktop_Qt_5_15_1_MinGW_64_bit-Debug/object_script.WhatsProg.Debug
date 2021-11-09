@@ -1,0 +1,11 @@
+debug/dados_cliente.o
+debug/dados_whatsprog.o
+debug/logindialog.o
+debug/mysocket.o
+debug/whatsprogmain.o
+debug/main_cliente.o
+debug/novaconversa.o
+debug/qrc_resources.o
+debug/moc_logindialog.o
+debug/moc_whatsprogmain.o
+debug/moc_novaconversa.o
